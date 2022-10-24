@@ -53,13 +53,19 @@ function App() {
     })
   }
   return (
-    <div style={{ width: "100%", height: "100%", margin: "0 auto", display: "flex" }}>
-      <textarea style={{ flex: 1, height: '100%' }} onChange={(e) => parseMarkdown(e.target.value)} rows={5} placeholder="Type here..." />
-      <div style={{ flex: 1, border: "1px solid #ccc" }}>
+    <div style={styles.container}>
+      <textarea style={styles.textArea} onChange={(e) => parseMarkdown(e.target.value)} rows={5} placeholder="Type here..." />
+      <div style={styles.formmatedArea}>
         {getFormattedValue()}
       </div>
     </div>
   );
+}
+
+const styles = {
+  container: { width: "100%", height: "100%", margin: "0 auto", display: "flex" },
+  textArea: { flex: 1, height: '100%' },
+  formmatedArea: { flex: 1, height: "100%", border: "1px solid #ccc" }
 }
 
 export default App;
