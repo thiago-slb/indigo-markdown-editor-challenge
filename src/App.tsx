@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function App() {
-  const [formattedText, setFormmatedText] = useState<any>([]);
+  const [formattedText, setFormmatedText] = useState<JSX.Element[]>([]);
 
   const escapeRegExp = (strToReplace: string) => strToReplace.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
@@ -36,7 +36,7 @@ function App() {
 
   function parseMarkdown(text: string) {
     let textArray = text.split("\n");
-    let formattedElements: any[] = [];
+    let formattedElements: JSX.Element[] = [];
 
     for (let i = 0; i < textArray.length; i++) {
       const cleanedText = replaceAllOccurrences({ str: textArray[i], find: '#', replace: '' });
@@ -46,9 +46,9 @@ function App() {
   }
 
   function getFormattedValue() {
-    return formattedText.map((line: any, index: string) => {
+    return formattedText.map((line: JSX.Element, index: number) => {
       return (
-        <div key={index}>{line}</div>
+        <div key={String(index)}>{line}</div>
       )
     })
   }
